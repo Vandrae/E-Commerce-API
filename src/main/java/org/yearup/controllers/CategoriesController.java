@@ -61,24 +61,29 @@ public class CategoriesController
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<Category> addCategory(@RequestBody Category category)
     {
-        // insert the category and return it with status 201 Created
-        return null;
+        // .staus changes the 200 to 201
+        return ResponseEntity.status(201).body(categoryService.create(category));
     }
 
-    @PutMapping
+    @PutMapping("{id}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public Category updateCategory(@PathVariable int id, @RequestBody Category category)
     {
-        // update the category by id and return the updated category (200 OK)
-        return null;
+        if (categoryService.getById(id) == null)
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        return categoryService.update(id, category);
     }
 
 
-    @DeleteMapping
+    @DeleteMapping("{id}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<Void> deleteCategory(@PathVariable int id)
     {
         // delete the category by id and return status 204 No Content
-        return null;
+        if (categoryService.getById(id) == null)
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+
+        categoryService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }

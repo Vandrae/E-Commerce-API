@@ -2,6 +2,7 @@ package org.yearup.service;
 
 import org.springframework.stereotype.Service;
 import org.yearup.models.Category;
+import org.yearup.models.Product;
 import org.yearup.repository.CategoryRepository;
 
 import java.util.List;
@@ -29,17 +30,22 @@ public class CategoryService
     public Category create(Category category)
     {
         // create a new category
-        return null;
+        return categoryRepository.save(category);
     }
 
     public Category update(int categoryId, Category category)
     {
         // update category and return the updated category
-        return null;
+        Category existing = categoryRepository.findById(categoryId).orElseThrow();
+        existing.setName(category.getName());
+        existing.setCategoryId(category.getCategoryId());
+        existing.setDescription(category.getDescription());
+        return categoryRepository.save(existing);
     }
 
     public void delete(int categoryId)
     {
         // delete category
+        categoryRepository.deleteById(categoryId);
     }
 }
