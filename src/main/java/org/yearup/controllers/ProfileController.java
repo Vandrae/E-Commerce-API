@@ -38,6 +38,12 @@ public class ProfileController {
 
     //Put - http://localhost:8080/profile - Profile Body
     @PutMapping
-    
+    public Profile editProfile(Principal principal, @RequestBody Profile profile){
+        String userName = principal.getName();
+        User user = userService.getByUserName(userName);
+        int userId = user.getId();
+        return profileService.update(userId,profile);
+    }
+
 
 }
