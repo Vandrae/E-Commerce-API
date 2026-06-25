@@ -76,15 +76,27 @@ Open MySQL Workbench and run the script located in the `/database` folder.
 
 3. **Configure environment variables**
 
-Create an `application.properties` file or set the following environment variables:
+In the `application.properties` file the datasource connection properties should look like the following:
 
 ```
-DATASOURCE_URL=jdbc:mysql://localhost:3306/your_database_name
-DATASOURCE_USERNAME=your_mysql_username
-DATASOURCE_PASSWORD=your_mysql_password
+spring.datasource.url=jdbc:mysql://localhost:3306/${DB_NAME:videogamestore}
+spring.datasource.username=${DB_USERNAME:root}
+spring.datasource.password=${DB_PASSWORD:password}
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 ```
 
-4. **Run the application**
+4. **Set Enviroment Variables**
+```
+DB_USERNAME=root;DB_PASSWORD=YourPasswordHere
+```
+![Product Search](https://github.com/Vandrae/e-commerce-api/blob/899c5e874eb316a3771c635cdbdefba471e0154a/Ecomm-edit.png)
+
+![Product Search](https://github.com/Vandrae/e-commerce-api/blob/899c5e874eb316a3771c635cdbdefba471e0154a/EV.png)
+
+
+
+
+5. **Run the application**
 ```bash
 ./mvnw spring-boot:run
 ```
