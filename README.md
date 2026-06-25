@@ -173,14 +173,44 @@ This approach keeps the cart data clean — no duplicate rows per product — an
 
 ## Screenshots
 
-> _Add your screenshots here after taking them from the running app and Insomnia._
 
 **Register New User**
-![Product Search](images/product-search.png)
+
+> _Registering a new user in Insomnia._
+
+![Product Search](https://github.com/Vandrae/e-commerce-api/blob/787ca88c965ac15e1e15e451cb2d174144772dc5/register-new-user.png)
+
+
 
 **Shopping Cart Response**
-![Shopping Cart](images/shopping-cart.png)
+
+> _A Empty Cart in Insomnia._
+
+![Product Search](https://github.com/Vandrae/e-commerce-api/blob/787ca88c965ac15e1e15e451cb2d174144772dc5/empty-cart.png)
+
+> _A Filled Cart in Insomnia with 5 Smart Phones and 1 Game._
+
+![Product Search](https://github.com/Vandrae/e-commerce-api/blob/787ca88c965ac15e1e15e451cb2d174144772dc5/filled-cart.png)
+
+> _A Filled Cart in The Frontend App with 5 Smart Phones and 1 Game._
+
+![Product Search](https://github.com/Vandrae/e-commerce-api/blob/787ca88c965ac15e1e15e451cb2d174144772dc5/frontend-cart.png)
+
+---
 
 **Update Profile**
-![Login](images/login.png)
-Video Game E-Commerce README
+
+> _The Users unedited Profile in Insomnia._
+
+![Product Search](https://github.com/Vandrae/e-commerce-api/blob/787ca88c965ac15e1e15e451cb2d174144772dc5/get-profile.png)
+
+> _The Users Edited Profile in Insomnia._
+
+> _Note: the failed tests are becuse the values are diffrent than what its specifically looking for._
+
+![Product Search](https://github.com/Vandrae/e-commerce-api/blob/787ca88c965ac15e1e15e451cb2d174144772dc5/update-profile.png)
+
+> _The Users Edited Profile in The Frontend App._
+
+![Product Search](https://github.com/Vandrae/e-commerce-api/blob/787ca88c965ac15e1e15e451cb2d174144772dc5/update-frontend.png)
+
