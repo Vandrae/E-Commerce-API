@@ -41,6 +41,7 @@ public class ProductService {
         return productRepository.save(product);
     }
 
+    //each relevant field is being set then were getting what we set and saving it to the repo
     public Product update(int productId, Product product) {
         Product existing = productRepository.findById(productId).orElseThrow();
         existing.setName(product.getName());

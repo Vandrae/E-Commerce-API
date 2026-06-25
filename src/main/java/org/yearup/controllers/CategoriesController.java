@@ -31,7 +31,7 @@ public class CategoriesController
     }
 
 
-
+    //endpoint for showing all categories in the DB
     @GetMapping
     @PreAuthorize("permitAll()")
     public List<Category> getAll()
@@ -39,6 +39,7 @@ public class CategoriesController
         return categoryService.getAllCategories();
     }
 
+    //endpoint for showing a specific category in the DB based on the ID
     @GetMapping("/{id}")
     @PreAuthorize("permitAll()")
     public Category getById(@PathVariable int id)
@@ -51,6 +52,7 @@ public class CategoriesController
         return category;
     }
 
+    //endpoint for showing all products connected to specific category
     @GetMapping("{categoryId}/products")
     public List<Product> getProductsById(@PathVariable int categoryId)
     {
@@ -58,13 +60,14 @@ public class CategoriesController
     }
 
     @PostMapping
+    // only a user with the role admin can execute this method
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<Category> addCategory(@RequestBody Category category)
     {
-        // .staus changes the 200 to 201
         return ResponseEntity.status(201).body(categoryService.create(category));
     }
 
+    //allows an admin to update a specific category
     @PutMapping("{id}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public Category updateCategory(@PathVariable int id, @RequestBody Category category)
@@ -74,12 +77,11 @@ public class CategoriesController
         return categoryService.update(id, category);
     }
 
-
+    //allows an admin to delete a specific category
     @DeleteMapping("{id}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<Void> deleteCategory(@PathVariable int id)
     {
-        // delete the category by id and return status 204 No Content
         if (categoryService.getById(id) == null)
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 

@@ -15,6 +15,7 @@ import java.security.Principal;
 
 @RestController
 @RequestMapping("/profile")
+//a user is required to be logged in to view their profile list all possible roles
 @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
 @CrossOrigin
 public class ProfileController {
@@ -25,7 +26,7 @@ public class ProfileController {
     @Autowired
     private UserRepository userRepository;
 
-    // Get - http://localhost:8080/profile - No Body
+    // able to view only your profile and all its fields
     @GetMapping
     public ResponseEntity<Profile> getProfile(Principal principal){
         String userName = principal.getName();
@@ -36,7 +37,7 @@ public class ProfileController {
     }
 
 
-    //Put - http://localhost:8080/profile - Profile Body
+    //abilty to edit fields on the profile
     @PutMapping
     public Profile editProfile(Principal principal, @RequestBody Profile profile){
         String userName = principal.getName();
